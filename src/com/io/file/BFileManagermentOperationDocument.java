@@ -1,14 +1,13 @@
 package com.io.file;
 
-import java.io.File;
-import java.io.IOException;
 
 /**
  * File文件操作之文件操作
  * @author blaife
  */
 public class BFileManagermentOperationDocument {
-    public static void main(String[] args) throws IOException {
+
+    public static void main(String[] args) {
 
         // 1.创建文件 createNewFile 返回 boolean
         /*File file = new File("F:\\javaBasicsTest\\NewCreatFile.txt");

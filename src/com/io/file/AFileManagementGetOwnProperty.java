@@ -9,7 +9,9 @@ import java.util.Date;
  * @author blaife
  */
 public class AFileManagementGetOwnProperty {
+
     public static void main(String[] args) {
+
         // 创建file对象，请先在F盘创建javaBasicsTest文件夹及test.txt文件
         File file = new File("F:\\javaBasicsTest\\test.txt");
 
@@ -44,5 +46,6 @@ public class AFileManagementGetOwnProperty {
 
         // 9.getName 获取文件名 返回 string
         System.out.println("文件名"+file.getName());
+
     }
 }
