@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
- * 字节输入流学习类
+ * 字节流学习之字节输入流学习类
  * @author Blaife
  */
 public class ByteInputStream {
@@ -41,7 +41,7 @@ public class ByteInputStream {
             System.out.println();
             System.out.println(len);
 
-            // 4.skip方法，跳过几个字节。常用与多线程,// 返回值为long
+            // 4.skip方法，跳过几个字节。常用与多线程, 返回值为long
             // 可以使用负值，使其反向跳跃。
             long v = fis.skip(-9);
             System.out.println(v);
