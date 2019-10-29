@@ -34,20 +34,15 @@ public class copyFileByByte {
             fis = new FileInputStream(sFile);
             String fileName = sFile.getName();
             dFolder += File.separator + fileName;
-            fos = new FileOutputStream(dFolder);
+            fos = new FileOutputStream(dFolder, true);
 
             // 读取字节内容
-            byte[] b = new byte[10];
+            byte[] b = new byte[1024];
             int count = fis.read(b);
-            StringBuffer goalContent = new StringBuffer();
             while (count != -1) {
-                goalContent.append(new String(b, 0, count));
+                fos.write(b, 0, count);
                 count = fis.read(b);
             }
-
-            // 输出文件内容
-            byte[] gb = goalContent.toString().getBytes();
-            fos.write(gb);
             return "拷贝完成";
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -60,13 +55,16 @@ public class copyFileByByte {
                 if (fis != null) {
                     fis.close();
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
                 if (fos != null) {
                     fos.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
     }
 
