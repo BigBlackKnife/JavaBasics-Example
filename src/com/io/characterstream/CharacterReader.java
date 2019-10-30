@@ -11,23 +11,23 @@ import java.io.IOException;
 public class CharacterReader {
 
     public static void main(String[] args) {
-        FileReader rf = null;
+        FileReader fr = null;
         try {
-            rf = new FileReader("F:\\javaBasicsTest\\test.txt");
+            fr = new FileReader("F:\\javaBasicsTest\\test.txt");
             // 1.返回此流使用的字符编码的名称  注意：并非读取的文件的字符编码
-            String codedSet = rf.getEncoding();
+            String codedSet = fr.getEncoding();
             System.out.println(codedSet);
 
             // 2-1.read不使用参数
-            int code = rf.read();
+            int code = fr.read();
             System.out.println((char)code);
 
             // 2-2.read使用char[]参数
             char[] c = new char[1024];
-            int count = rf.read(c);
+            int count = fr.read(c);
             while (count != -1) {
                 System.out.print(new String(c, 0, count));
-                count = rf.read(c);
+                count = fr.read(c);
             }
 
         } catch (FileNotFoundException e) {
@@ -36,8 +36,8 @@ public class CharacterReader {
             e.printStackTrace();
         } finally {
             try {
-                if (rf != null) {
-                    rf.close();
+                if (fr != null) {
+                    fr.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
