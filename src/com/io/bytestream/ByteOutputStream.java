@@ -1,6 +1,5 @@
-package com.io.byteStream;
+package com.io.bytestream;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.io.Assignment;
+package com.io.assignment;
 
 import java.io.File;
 
