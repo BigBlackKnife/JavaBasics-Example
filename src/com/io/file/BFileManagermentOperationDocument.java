@@ -31,6 +31,7 @@ public class BFileManagermentOperationDocument {
         System.out.println(file.getParentFile());*/
 
         // 6.获取子元素名称 返回string[] foreach循环输出
+        // 使用参数限制的list示例请查看DirList类
         /*File file = new File("F:\\javaBasicsTest");
         String[] fileList = file.list();
         for (String f : fileList) {
