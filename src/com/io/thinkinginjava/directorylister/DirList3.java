@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 public class DirList3 {
 
     public static void main(String[] args) {
-        System.out.println(args.length);
         File path = new File(".");
         String[] list;
         if (args.length == 0){
