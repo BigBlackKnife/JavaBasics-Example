@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 public final class Directory {
 
     /**
-     *
+     * 获取当前目录下符合正则条件的文件
      * @param dir
      * @param regex
      * @return
@@ -28,21 +28,27 @@ public final class Directory {
             }
         });
     }
-    // Overloaded
+    // Overloaded 获取当前目录下符合正则条件的文件
     public static File[] local(String path, final String regex) {
         return local(new File(path), regex);
     }
 
+    /**
+     * 文件集合 实现迭代接口
+     */
     public static class TreeInfo implements Iterable<File> {
         private List<File> files = new ArrayList<File>();
         private List<File> dirs = new ArrayList<File>();
-
 
         @Override
         public Iterator<File> iterator() {
             return files.iterator();
         }
 
+        /**
+         * 此方法的主要作用是 迭代获取的下级对象TreeInfo要把文件内容传递给上级循环
+         * @param other 其他目录集合，其实是下一级的文件
+         */
         void addAll(TreeInfo other){
             files.addAll(other.files);
             dirs.addAll(other.dirs);
@@ -54,6 +60,12 @@ public final class Directory {
         }
     }
 
+    /**
+     * 开始方法，做方法重载来进入主方法recurseDirs
+     * @param start 开始目录
+     * @param regex 正则条件
+     * @return TreeInfo
+     */
     public static TreeInfo walk(String start, String regex) {
         return recurseDirs(new File(start), regex);
     }
@@ -70,14 +82,19 @@ public final class Directory {
         return recurseDirs(start, ".*");
     }
 
+    /**
+     * 主方法 迭代获取初始目录下的所有文件
+     * @param startDir 目录
+     * @param regex 正则条件
+     * @return
+     */
     static TreeInfo recurseDirs(File startDir, String regex) {
         TreeInfo result = new TreeInfo();
         for (File item : startDir.listFiles()) {
             if (item.isDirectory()){
                 result.dirs.add(item);
-                recurseDirs(item, regex);
+                result.addAll(recurseDirs(item, regex));
             } else {
-                System.out.println(item.getName() + "-" + regex + ":" +item.getName().matches(regex));
                 if (item.getName().matches(regex)){
                     result.files.add(item);
                 }
@@ -88,10 +105,11 @@ public final class Directory {
 
     public static void main(String[] args) {
         if (args.length == 0) {
-            System.out.println(walk("F:\\javaBasicsTest"));
+            System.out.println(walk("."));
         } else {
             for (String arg : args){
-                System.out.println(walk("F:\\javaBasicsTest", arg));
+                System.out.println(arg);
+                System.out.println(walk(".", arg));
             }
         }
     }
