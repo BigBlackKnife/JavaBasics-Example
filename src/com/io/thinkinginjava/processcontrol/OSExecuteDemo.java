@@ -5,6 +5,6 @@ package com.io.thinkinginjava.processcontrol;
  */
 public class OSExecuteDemo {
     public static void main(String[] args) {
-        OSExecute.command("javap OSExecuteDemo");
+        OSExecute.command("javap com\\io\\thinkinginjava\\processcontrol\\OSExecuteDemo.java");
     }
 }
