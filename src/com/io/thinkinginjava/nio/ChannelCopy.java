@@ -28,5 +28,8 @@ public class ChannelCopy {
             out.write(buffer);
             buffer.clear();
         }
+
+        in.close();
+        out.close();
     }
 }
