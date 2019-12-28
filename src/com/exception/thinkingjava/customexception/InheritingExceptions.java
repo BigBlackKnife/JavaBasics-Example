@@ -21,6 +21,7 @@ public class InheritingExceptions {
         try {
             sed.f();
         } catch (SimpleException e) {
+            e.printStackTrace();
             System.out.println("Caught it!");
         }
     }
