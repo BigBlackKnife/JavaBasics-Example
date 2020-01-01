@@ -17,6 +17,10 @@ public class LoggingExceptions2 {
         logger.severe(trace.toString());
     }
 
+    /**
+     * 主方法
+     * @param args
+     */
     public static void main(String[] args) {
         try {
             throw new NullPointerException();
