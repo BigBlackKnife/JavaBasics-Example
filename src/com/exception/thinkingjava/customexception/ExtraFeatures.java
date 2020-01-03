@@ -13,8 +13,6 @@ class MyException2 extends  Exception {
     public MyException2() {
     }
 
-    ;
-
     /**
      * 单参构造函数
      *
