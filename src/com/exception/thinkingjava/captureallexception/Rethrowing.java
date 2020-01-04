@@ -2,6 +2,7 @@ package com.exception.thinkingjava.captureallexception;
 
 /**
  * 重新抛出异常 -- fillInStackTrace（执行堆栈跟踪）
+ * 这个类和Think in Java 中的略有不同，我这里没有把Throwable强转为Exception,可以看的更加直观一点
  */
 public class Rethrowing {
 
