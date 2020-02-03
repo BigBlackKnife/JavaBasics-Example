@@ -1,4 +1,4 @@
-package com.exception.thinkingjava.captureallexception;
+package com.exception.thinkingjava.withfinally;
 
 class ThreeException extends Exception{};
 
