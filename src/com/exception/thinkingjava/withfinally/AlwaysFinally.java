@@ -23,5 +23,4 @@ public class AlwaysFinally {
             System.out.println("finally in 1nd try block");
         }
     }
-
 }
