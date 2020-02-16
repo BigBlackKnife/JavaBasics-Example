@@ -21,7 +21,7 @@ public class GetChannel {
         // 添加到文件的末尾
         fc = new RandomAccessFile("test.out", "rw").getChannel();
         fc.position(fc.size()); // 移动到末尾
-        fc.write(ByteBuffer.wrap("Some more ".getBytes()));
+        fc.write(ByteBuffer.wrap("Some more".getBytes()));
         fc.close();
 
         // 读取文件
@@ -31,6 +31,7 @@ public class GetChannel {
         fc.read(buff);
         buff.flip();
         while (buff.hasRemaining()) {
+            // 每次读取一个字节，拼接输出，所以存在汉字时会乱码
             System.out.print((char)buff.get());
         }
     }
