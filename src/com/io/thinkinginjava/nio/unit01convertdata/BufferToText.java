@@ -19,10 +19,6 @@ public class BufferToText {
         // FileChannel：用于读取，写入，映射和操作文件的通道
         // 向文件中输入信息
         FileChannel fc = new FileOutputStream("data2.txt").getChannel();
-        fc.write(ByteBuffer.wrap("一些数据 ".getBytes()));
-        fc.close();
-
-        // 从文件中输出信息
         fc = new FileInputStream("data2.txt").getChannel();
         ByteBuffer buff = ByteBuffer.allocate(BSIZE);
         fc.read(buff);
