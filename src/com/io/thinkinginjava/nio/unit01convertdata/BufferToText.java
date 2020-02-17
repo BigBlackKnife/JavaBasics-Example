@@ -2,7 +2,6 @@ package com.io.thinkinginjava.nio.unit01convertdata;
 
 import java.io.*;
 import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 
@@ -20,7 +19,7 @@ public class BufferToText {
         // FileChannel：用于读取，写入，映射和操作文件的通道
         // 向文件中输入信息
         FileChannel fc = new FileOutputStream("data2.txt").getChannel();
-        fc.write(ByteBuffer.wrap("some text ".getBytes()));
+        fc.write(ByteBuffer.wrap("一些数据 ".getBytes()));
         fc.close();
 
         // 从文件中输出信息
