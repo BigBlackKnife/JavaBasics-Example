@@ -24,7 +24,7 @@ public class LockingMappedFiles {
         for (int i = 0; i < LENGTH; i++) {
             out.put((byte)'x');
         }
-        new LockAndModify(out, 0, 0 + LENGTH);
+        new LockAndModify(out, 0, 0 + LENGTH / 3);
         new LockAndModify(out, LENGTH/2, LENGTH / 2 + LENGTH / 4);
     }
 
