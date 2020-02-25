@@ -24,7 +24,7 @@ public class GetData {
         /* 向ByteBuffer插入基本类型的数据，利用asCharBuffer...获得该缓冲区上的视图，然后使用该视图的put方法 */
 
         // asCharBuffer（例外：需要进行类型转换，可能会截取或改变结果）
-        // TODO 测试英文和汉字未发现问题
+        // 测试英文和汉字未发现问题
         bb.rewind();
         bb.asCharBuffer().put("测试汉字!");
         char c;
