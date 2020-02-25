@@ -17,7 +17,7 @@ import java.util.zip.*;
  */
 public class ZipCompress {
     public static void main(String[] args) throws IOException {
-        // TODO 压缩文件
+        // 压缩文件
         // 设置文件集
         String[] params = new String[]{"data2.txt", "file.txt", "test.out"};
         // 设置文件输出流
@@ -49,7 +49,7 @@ public class ZipCompress {
         // 返回此输出流的检验和
         System.out.println("CheckSum: " + csum.getChecksum().getValue());
 
-        // TODO 读取文件
+        // 读取文件
         System.out.println("Reading file");
         FileInputStream fi = new FileInputStream("test.zip");
         // 同样需要设置Checksum类型
@@ -72,7 +72,7 @@ public class ZipCompress {
         System.out.println("Checksm: " + csumi.getChecksum().getValue());
         bis.close();
 
-        // TODO 输出zip文件中所有的文件名
+        // 输出zip文件中所有的文件名
         ZipFile zf = new ZipFile("test.zip");
         // 返回zip文件项的枚举
         Enumeration e = zf.entries();
