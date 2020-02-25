@@ -62,7 +62,7 @@ public class Worm implements Serializable {
     }
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        /*TODO 从文件中存取*/
+        /* 从文件中存取 */
         Worm w = new Worm(6, 'a');
         System.out.println("w = " + w);
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("worm.out"));
@@ -74,7 +74,7 @@ public class Worm implements Serializable {
         Worm w2 = (Worm) in.readObject();
         System.out.println(s + "w2 = " + w2);
 
-        /*TODO 从ByteArrayOutputStream中存取*/
+        /* 从ByteArrayOutputStream中存取 */
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
         ObjectOutputStream out2 = new ObjectOutputStream(bout);
         out2.writeObject("Worm storage\n");
