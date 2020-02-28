@@ -10,7 +10,7 @@ import java.util.List;
  * 序列化到单一流，不会有重复复制的现象（animal1和animal2中地址相同，包括引用）
  * 序列化的两个流中，得到的是两个不同的关系网（animal2和animal3中地址不同，包括引用）
  */
-class House implements Serializable {};
+class House implements Serializable {}
 
 class Animal implements Serializable {
     private String name;
@@ -30,7 +30,7 @@ class Animal implements Serializable {
 public class MyWorld {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         House house = new House();
-        List<Animal> animals = new ArrayList<Animal>();
+        List<Animal> animals = new ArrayList<>();
         animals.add(new Animal("Bosco the Dog", house));
         animals.add(new Animal("Ralph the hamster", house));
         animals.add(new Animal("Molly the cat", house));
@@ -44,9 +44,9 @@ public class MyWorld {
         out2.writeObject(animals);
         ObjectInputStream in1 = new ObjectInputStream(new ByteArrayInputStream(buf1.toByteArray()));
         ObjectInputStream in2 = new ObjectInputStream(new ByteArrayInputStream(buf2.toByteArray()));
-        List<Animal> animals1 = (List<Animal>) in1.readObject();
-        List<Animal> animals2 = (List<Animal>) in1.readObject();
-        List<Animal> animals3 = (List<Animal>) in2.readObject();
+        @SuppressWarnings("all")List<Animal> animals1 = (List<Animal>) in1.readObject();
+        @SuppressWarnings("all")List<Animal> animals2 = (List<Animal>) in1.readObject();
+        @SuppressWarnings("all")List<Animal> animals3 = (List<Animal>) in2.readObject();
         System.out.println("animals1: \n" + animals1);
         System.out.println("animals2: \n" + animals2);
         System.out.println("animals3: \n" + animals3);
