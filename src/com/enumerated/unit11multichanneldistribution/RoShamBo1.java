@@ -1,4 +1,4 @@
-package com.enumerated.unit11multiplexbranch;
+package com.enumerated.unit11multichanneldistribution;
 
 import java.util.Random;
 

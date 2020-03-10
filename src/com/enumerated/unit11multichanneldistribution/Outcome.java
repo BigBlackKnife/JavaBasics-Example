@@ -1,4 +1,4 @@
-package com.enumerated.unit11multiplexbranch;
+package com.enumerated.unit11multichanneldistribution;
 
 /**
  * 多路分支 -- 结果
