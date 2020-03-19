@@ -9,7 +9,7 @@ public class Member {
     String firstName;
     @SQLString(50)
     String lastName;
-    @SQLInteger
+    @SQLInteger(constraints = @Constraints(allowNull = false, unique = true))
     Integer age;
     // 最好的方法是：每种类型特性使用一个注解，公共特性使用一个注解
     @SQLString(value = 30, constraints = @Constraints(primaryKey = true))
