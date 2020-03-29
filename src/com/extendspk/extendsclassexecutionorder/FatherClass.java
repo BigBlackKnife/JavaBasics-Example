@@ -2,10 +2,11 @@ package com.extendspk.extendsclassexecutionorder;
 
 /**
  * 父类
+ * @author Blaife
  */
-public class FatcherClass {
+public class FatherClass {
 
-    public FatcherClass() {
+    public FatherClass() {
         System.out.println("FatcherClass");
     }
 
