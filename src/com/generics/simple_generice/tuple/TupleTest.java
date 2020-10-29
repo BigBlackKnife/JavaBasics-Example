@@ -1,4 +1,4 @@
-package com.generics.tuple;
+package com.generics.simple_generice.tuple;
 
 /**
  * @author Blaife

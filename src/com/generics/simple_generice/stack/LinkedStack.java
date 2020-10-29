@@ -1,4 +1,4 @@
-package com.generics.stack;
+package com.generics.simple_generice.stack;
 
 /**
  * @author Blaife
