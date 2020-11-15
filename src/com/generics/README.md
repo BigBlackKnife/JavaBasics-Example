@@ -178,3 +178,7 @@ public class CollectionMethodDifferences {
     }
 }
 ```
+
+## 构建复杂模型
+
+- 泛型能够简单安全地创建复杂模型

@@ -11,23 +11,23 @@ import static com.generics.method_generice.Tuple.tuple;
  * @date 2020/11/11 19:46
  */
 public class TupleTest2 {
-    static Tuple2<String, Integer> f() {
+    public static Tuple2<String, Integer> f() {
         return tuple("hi", 47);
     }
 
-    static Tuple2 f2() {
+    public static Tuple2 f2() {
         return tuple("hi", 47);
     }
 
-    static Tuple3<Amphibian, String, Integer> g() {
+    public static Tuple3<Amphibian, String, Integer> g() {
         return tuple(new Amphibian(), "hi", 47);
     }
 
-    static Tuple4<Vehicle, Amphibian, String, Integer> h() {
+    public static Tuple4<Vehicle, Amphibian, String, Integer> h() {
         return tuple(new Vehicle(), new Amphibian(), "hi", 47);
     }
 
-    static Tuple5<Vehicle, Amphibian, String, Integer, Double> k() {
+    public static Tuple5<Vehicle, Amphibian, String, Integer, Double> k() {
         return tuple(new Vehicle(), new Amphibian(), "hi", 47, 11.1);
     }
 
