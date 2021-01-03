@@ -14,10 +14,14 @@ public class MoneyConvertForCNY {
      */
     private static final String[] CN_UPPER_NUMBER = { "零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖" };
 
-    /** 整数部分的单位 */
+    /**
+     * 整数部分的单位
+     */
     private static final String[] CN_INTEGER_UNIT = { "元", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟", "万", "拾", "佰", "仟" };
 
-    /** 小数部分的单位 */
+    /**
+     * 小数部分的单位
+     */
     private static final String[] CN_DECIMAL_UNIT = { "角", "分", "厘", "毫"};
 
     /**
@@ -45,10 +49,21 @@ public class MoneyConvertForCNY {
      */
     private static final String CN_ZEOR_FULL = "零元" + CN_FULL;
 
+    /**
+     * 金额转换方法
+     * @param numberOfMoney 金额数字 BigDecimal
+     * @return 中文大写
+     */
     public static String moneyCover(BigDecimal numberOfMoney) {
         return moneyCover(numberOfMoney, CN_MONEY_PRECISION_DEFAULT);
     }
 
+    /**
+     * 金额转换方法
+     * @param numberOfMoney 金额数字 BigDecimal
+     * @param precision 小数位精确度
+     * @return 中文大写
+     */
     public static String moneyCover(BigDecimal numberOfMoney, int precision) {
         if (precision < 0 || precision > 4) {
             return "错误：精度只能选择区间[0,4]范围内的整数";
