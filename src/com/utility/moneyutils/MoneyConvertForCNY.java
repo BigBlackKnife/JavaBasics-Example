@@ -27,12 +27,11 @@ public class MoneyConvertForCNY {
     /**
      * 金额的精度 [0-4]
      */
-    private static final int CN_MONEY_PRECISION_ZERO = 0;
-    private static final int CN_MONEY_PRECISION_ONE = 1;
-    private static final int CN_MONEY_PRECISION_TWO = 2;
-    private static final int CN_MONEY_PRECISION_THREE = 3;
-    private static final int CN_MONEY_PRECISION_FOUR = 4;
-    private static final int CN_MONEY_PRECISION_DEFAULT = 4;
+    static final int CN_MONEY_PRECISION_ZERO = 0;
+    static final int CN_MONEY_PRECISION_ONE = 1;
+    static final int CN_MONEY_PRECISION_TWO = 2;
+    static final int CN_MONEY_PRECISION_THREE = 3;
+    static final int CN_MONEY_PRECISION_FOUR = 4;
 
     /**
      * 特殊字符：整
@@ -52,15 +51,6 @@ public class MoneyConvertForCNY {
     /**
      * 金额转换方法
      * @param numberOfMoney 金额数字 BigDecimal
-     * @return 中文大写
-     */
-    public static String moneyCover(BigDecimal numberOfMoney) {
-        return moneyCover(numberOfMoney, CN_MONEY_PRECISION_DEFAULT);
-    }
-
-    /**
-     * 金额转换方法
-     * @param numberOfMoney 金额数字 BigDecimal
      * @param precision 小数位精确度
      * @return 中文大写
      */
@@ -74,6 +64,11 @@ public class MoneyConvertForCNY {
         // 为0的情况，输出 CN_ZEOR_FULL （零元整）
         if (signum == 0) {
             return CN_ZEOR_FULL;
+        }
+        // 正负情况划分
+        String signFlag = "";
+        if (signum == -1) {
+            signFlag = CN_NEGATIVE;
         }
         // 去掉多余位数，求绝对值后转为 long 类型
         String number = numberOfMoney.setScale(precision, BigDecimal.ROUND_HALF_UP).abs().toString();
@@ -95,21 +90,23 @@ public class MoneyConvertForCNY {
         // 结果小于0
         if ("".equals(integerStr)) {
             if (CN_UPPER_NUMBER[0].equals(String.valueOf(decimalStr.charAt(0)))) {
-                return decimalStr.substring(1, decimalStr.length());
+                return signFlag + decimalStr.substring(1, decimalStr.length());
+            } else {
+                return signFlag + decimalStr;
             }
         }
         // 小数位为空
         if ("".equals(decimalStr)) {
-            return integerStr + CN_FULL;
+            return signFlag + integerStr + CN_FULL;
         }
         // 整数与小数交接位置上零的处理
         if ("0".equals(String.valueOf(integerPortion.charAt(integerPortion.length()-1)))) {
             if (!CN_UPPER_NUMBER[0].equals(String.valueOf(decimalStr.charAt(0)))) {
-                return integerStr + CN_UPPER_NUMBER[0] + decimalStr;
+                return signFlag + integerStr + CN_UPPER_NUMBER[0] + decimalStr;
             }
         }
         // 一般结果
-        return integerStr + decimalStr;
+        return signFlag + integerStr + decimalStr;
     }
 
     /**
@@ -223,6 +220,6 @@ public class MoneyConvertForCNY {
     }
 
     public static void main(String[] args) {
-        System.out.println(moneyCover(new BigDecimal("123124141.031")));
+        System.out.println(moneyCover(new BigDecimal("-100"), CN_MONEY_PRECISION_FOUR));
     }
 }
