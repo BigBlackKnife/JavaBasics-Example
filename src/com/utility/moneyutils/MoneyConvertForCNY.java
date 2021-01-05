@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 /**
  * @author Blaife
- * @description 人名币金额转换类 - 金额数字转中文大写
+ * @description 金额转换类 - 金额数字转中文大写
  * @date 2020/12/30 21:10
  */
 public class MoneyConvertForCNY {
@@ -55,10 +55,6 @@ public class MoneyConvertForCNY {
      * @return 中文大写
      */
     public static String moneyCover(BigDecimal numberOfMoney, int precision) {
-        if (precision < 0 || precision > 4) {
-            return "错误：精度只能选择区间[0,4]范围内的整数";
-        }
-        StringBuffer sb = new StringBuffer();
         // 判断其是负数、0、正数
         int signum = numberOfMoney.signum();
         // 为0的情况，输出 CN_ZEOR_FULL （零元整）
@@ -90,7 +86,7 @@ public class MoneyConvertForCNY {
         // 结果小于0
         if ("".equals(integerStr)) {
             if (CN_UPPER_NUMBER[0].equals(String.valueOf(decimalStr.charAt(0)))) {
-                return signFlag + decimalStr.substring(1, decimalStr.length());
+                return signFlag + decimalStr.substring(1);
             } else {
                 return signFlag + decimalStr;
             }
@@ -120,7 +116,7 @@ public class MoneyConvertForCNY {
             return "";
         }
         // 处理字符容器
-        StringBuilder chineseIntegerStr = new StringBuilder("");
+        StringBuilder chineseIntegerStr = new StringBuilder();
         // 数字长度
         int length = integerPortion.length();
         // 当前处理字符数字
@@ -193,7 +189,7 @@ public class MoneyConvertForCNY {
             return "";
         }
         // 处理字符容器
-        StringBuilder chineseIntegerStr = new StringBuilder("");
+        StringBuilder chineseIntegerStr = new StringBuilder();
         // 数字长度
         int length = decimalPortion.length();
         int currNum;
@@ -220,6 +216,6 @@ public class MoneyConvertForCNY {
     }
 
     public static void main(String[] args) {
-        System.out.println(moneyCover(new BigDecimal("-100"), CN_MONEY_PRECISION_FOUR));
+        System.out.println(moneyCover(new BigDecimal("0.99"), CN_MONEY_PRECISION_FOUR));
     }
 }
