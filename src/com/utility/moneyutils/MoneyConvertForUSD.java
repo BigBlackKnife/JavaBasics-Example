@@ -30,14 +30,49 @@ public class MoneyConvertForUSD {
     private static final String[] EN_SCALE_NUMBER = {"", "THOUSAND", "MILLION", "BILLION"};
 
     /**
+     * 表示形式 - 美分
+     */
+    static final String EN_PRESENTATION_CENTS = "cents";
+
+    /**
+     * 表示形式 - 美点
+     */
+    static final String EN_PRESENTATION_POINT = "point";
+
+    /**
+     * 表示形式 - 分数
+     */
+    static final String EN_PRESENTATION_GRADE = "grade";
+
+    /**
      * 金额转换方法
      * @param numberOfMoney 金额数字 BigDecimal
      * @return 英文大写
      */
-    public static String moneyCover(BigDecimal numberOfMoney) {
-        return "";
+    public static String moneyCover(BigDecimal numberOfMoney, String presentation) {
+        StringBuilder sb = new StringBuilder();
+        String number = numberOfMoney.setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+        String[] numberArr = number.split("\\.");
+        String integerPortion = numberArr[0];
+        String decimalPortion = numberArr[1];
+        if (integerPortion.length() > EN_SCALE_NUMBER.length * 3) {
+            return number + ":超出处理能力";
+        }
+        String integerStr = getAmericaInteger(integerPortion);
+        sb.append("SAY US DOLLARS ").append(integerStr);
+        if (!"00".equals(decimalPortion)) {
+            String decimalStr = getAmericaInteger(decimalPortion);
+            if (EN_PRESENTATION_CENTS.equals(presentation)) {
+                sb.append("AND CENTS ").append(decimalStr);
+            } else if (EN_PRESENTATION_POINT.equals(presentation)) {
+                sb.append("AND POINT ").append(decimalStr);
+            } else if (EN_PRESENTATION_GRADE.equals(presentation)) {
+                sb.append("AND ").append(decimalStr).append(decimalPortion).append("/100 ");
+            }
+        }
+        sb.append("ONLY");
+        return sb.toString();
     }
-
 
     /**
      * 获取[整数/美分形式的小数]内容英文字符串
@@ -84,7 +119,7 @@ public class MoneyConvertForUSD {
         if (currNum.length() == 3 && !currNum.equals("000")) {
             // 第一位字符不为 0 进行处理
             if (!currNum.substring(0, 1).equals("0")) {
-                thisStr.append(EN_SMALL_NUMBER[Integer.parseInt(currNum.substring(0, 1))] + " HUNDRED");
+                thisStr.append(EN_SMALL_NUMBER[Integer.parseInt(currNum.substring(0, 1))]).append(" HUNDRED");
                 // 后两位不为 00， 拼接 AND
                 if (!currNum.substring(1, 3).equals("00")) {
                     thisStr.append(" AND ");
@@ -119,7 +154,9 @@ public class MoneyConvertForUSD {
 
 
     public static void main(String[] args) {
-        System.out.println(getAmericaInteger("123123123"));
+        System.out.println(moneyCover(new BigDecimal("100.00"), EN_PRESENTATION_CENTS));
+        System.out.println(moneyCover(new BigDecimal("100.00"), EN_PRESENTATION_POINT));
+        System.out.println(moneyCover(new BigDecimal("100.00"), EN_PRESENTATION_GRADE));
     }
 
 }
