@@ -53,4 +53,32 @@ public class MoneyConvertUtil {
     public static String toCNYStrAndDecimal_4(BigDecimal bd) {
         return MoneyConvertForCNY.moneyCover(bd, MoneyConvertForCNY.CN_MONEY_PRECISION_FOUR);
     }
+
+    /**
+     * 金额转换英文大写 美分形式
+     * @param bd 金额
+     * @return
+     */
+    public static String toUSDStrAndDecimal_cents(BigDecimal bd) {
+        return MoneyConvertForUSD.moneyCover(bd, MoneyConvertForUSD.EN_PRESENTATION_CENTS);
+    }
+
+    /**
+     * 金额转换英文大写 美点形式
+     * @param bd 金额
+     * @return
+     */
+    public static String toUSDStrAndDecimal_point(BigDecimal bd) {
+        return MoneyConvertForUSD.moneyCover(bd, MoneyConvertForUSD.EN_PRESENTATION_POINT);
+    }
+
+    /**
+     * 金额转换英文大写 分数形式
+     * @param bd 金额
+     * @return
+     */
+    public static String toUSDStrAndDecimal_grade(BigDecimal bd) {
+        return MoneyConvertForUSD.moneyCover(bd, MoneyConvertForUSD.EN_PRESENTATION_GRADE);
+    }
+
 }
