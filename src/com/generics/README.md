@@ -253,3 +253,43 @@ Java泛型是使用擦除实现的，***作何理解***？
 - 边界使得你可以在用于泛型的阐述类型上设置限制条件，以便于按照自己的边界类型来调用方法。
 - 无界 `<T>` 泛型参数调用的方法只是那些可以用Object调用的方法。
 - java泛型重用了 `extends` 关键字，但需要注意的式， `extends` 关键字在泛型边界的上下文环境中和普通环境下所具有的意义式完全不同的。
+
+## 通配符
+
+> 在泛型参数表达式中的问号
+
+### 基本
+
+
+***数组的特殊行为，可以向导出类型的数组赋予基类型的数据引用，但此时，数据类型会编程引用数据类型。***
+```java
+
+Fruit[] fruit = new Apple[10];
+// 运行时类型为 Apple 而非Fruit
+
+fruit[0] = new Apple();
+fruit[0] = new Fruit(); 
+// 此时异常出现 ArrayStoreException
+```
+
+---
+***使用泛型容器来代替数组时，编译错误***
+```java
+// Compile Error: incompatible types:
+List<Fruit> flist = new ArrayList<Apple>();
+```
+
+---
+***使用泛型通配符形式***
+```java
+List<? extends Fruit> flist = new ArrayList<>();
+
+// Compile Error: can't add any type of object:
+// flist.add(new Apple());
+// flist.add(new Fruit());
+// flist.add(new Object());
+// 这并不意味着你可以使用符合类型的对象，你并不能添加任意类型的对象
+
+List<? extends Fruit> flist2 = new ArrayList<Apple>();
+// 正确的用法时将符合类型的集合对象，赋值于它。
+```
