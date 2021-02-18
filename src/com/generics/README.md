@@ -293,3 +293,11 @@ List<? extends Fruit> flist = new ArrayList<>();
 List<? extends Fruit> flist2 = new ArrayList<Apple>();
 // 正确的用法时将符合类型的集合对象，赋值于它。
 ```
+
+### 编译器有多聪明
+
+- 编译器将检查代码，以查看是否有某个特定的方法修改了他的对象？ (并非如此)
+- 编译器会直接拒绝对阐述列表中涉及通配符的方法（例如add()）的调用
+    - contains和indexOf参数类型都是Object，所以编译器允许
+    - add不允许
+- 意味着由泛型类的设计者来决定哪些调用时安全的
